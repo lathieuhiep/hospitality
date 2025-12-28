@@ -6,13 +6,13 @@ use Carbon_Fields\Field;
 
 defined('ABSPATH') || exit;
 
-final class AboutTab
+final class ServicesTab
 {
-    private const META_KEY = 'home_about';
+    private const META_KEY = 'home_services';
 
     private const META_TITLE = self::META_KEY . '_title';
     private const META_DESC  = self::META_KEY . '_desc';
-    private const META_IMAGE = self::META_KEY . '_image';
+    private const META_LIST  = self::META_KEY . '_list';
 
     /**
      * Fields definition
@@ -40,10 +40,25 @@ final class AboutTab
                 ->set_rows(4),
 
             Field::make(
-                'image',
-                self::META_IMAGE,
-                esc_html__('Image', 'extend-site')
-            ),
+                'complex',
+                self::META_LIST,
+                esc_html__('Services List', 'extend-site')
+            )
+                ->set_max(5)
+                ->set_layout('tabbed-horizontal')
+                ->add_fields([
+                    Field::make(
+                        'image',
+                        'image',
+                        esc_html__('Image', 'extend-site')
+                    ),
+                    Field::make(
+                        'text',
+                        'title',
+                        esc_html__('Service Title', 'extend-site')
+                    ),
+                ])
+                ->set_header_template('<%- title ? title : "Service item" %>'),
         ];
     }
 
@@ -55,7 +70,7 @@ final class AboutTab
         return [
             'title' => carbon_get_post_meta($post_id, self::META_TITLE),
             'desc'  => carbon_get_post_meta($post_id, self::META_DESC),
-            'image' => carbon_get_post_meta($post_id, self::META_IMAGE),
+            'items' => carbon_get_post_meta($post_id, self::META_LIST) ?: [],
         ];
     }
 }

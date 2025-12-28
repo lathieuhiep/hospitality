@@ -25,7 +25,11 @@
         // history.scrollRestoration = 'auto';
     }
 
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin);
+    // setTimeout(function() {
+    //     window.scrollTo({ top: 0, behavior: 'smooth' })
+    // });
+
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     $.fn.numberTextLine = function(opts) {
         $(this).each( function () {
@@ -149,7 +153,6 @@
         // syncTouchLerp: 0.075,  // Lerp cho inertia touch
         // touchInertiaExponent: 1.7,  // Độ mạnh inertia touch
         // touchMultiplier: 1,  // Hệ số touch
-        prevent: true,
         smoothTouch: false,  // Tắt smooth touch nếu cần native hơn (tùy chỉnh theo test)
         // gestureOrientation: 'vertical',  // Hướng cử chỉ
     });
@@ -704,8 +707,115 @@
     }
 
     // new
+    function homeDichvuJs() {
+        const wrap = $('.sec-dichVu');
+        if (!wrap.length) return;
+
+        // ===== FLAG: đang điều hướng bằng anchor =====
+        let isAnchorNavigating = false;
+
+        // Bắt click anchor
+        $(document).on('click', 'a[href^="#"]', function () {
+            isAnchorNavigating = true;
+
+            // Sau khi anchor scroll xong thì bật lại scroll hijack
+            setTimeout(() => {
+                isAnchorNavigating = false;
+            }, 1200);
+        });
+
+        if (ww > 1199) {
+            const sections = document.querySelectorAll(".sec-dichVu .n-dot");
+            if (sections.length <= 1) return;
+
+            const effect1 = (i, dir) => {
+                if (dir === 'xuong') {
+                    const contentItem = wrap.find(`.item-box[data-index="${i}"]`);
+                    const contentItemBack = wrap.find(`.item-box[data-index="${i - 1}"]`);
+
+                    gsap.to(contentItemBack, 0.3, {
+                        autoAlpha: 0,
+                        onComplete: () => {
+                            contentItemBack.removeClass('effect-in');
+                            contentItem.addClass('effect-in');
+                        }
+                    });
+
+                    gsap.to(contentItem, 1.4, {
+                        onStart: () => {
+                            gsap.to(contentItem, 0.3, { autoAlpha: 1 });
+                        },
+                        onComplete: () => {
+                            lenis.start();
+                        }
+                    });
+
+                } else {
+                    const contentItem = wrap.find(`.item-box[data-index="${i}"]`);
+                    const contentItemBack = wrap.find(`.item-box[data-index="${i + 1}"]`);
+
+                    gsap.to(contentItemBack, {
+                        autoAlpha: 0,
+                        onComplete: () => {
+                            contentItemBack.removeClass('effect-in');
+                            contentItem.addClass('effect-in');
+                        }
+                    });
+
+                    gsap.to(contentItem, 1.4, {
+                        onStart: () => {
+                            gsap.to(contentItem, 0.3, { autoAlpha: 1 });
+                        },
+                        onComplete: () => {
+                            lenis.start();
+                        }
+                    });
+                }
+            };
+
+            function goToSection(section, i, dir) {
+                lenis.scrollTo(section, {
+                    force: true,
+                    duration: 1,
+                    immediate: false,
+                    lock: true,
+                    onComplete: () => {
+                        lenis.stop();
+                    }
+                });
+                effect1(i, dir);
+            }
+
+            sections.forEach((section, i) => {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top bottom-=10",
+                    end: "bottom top+=10",
+
+                    onEnter: () => {
+                        // 🚫 đang anchor thì bỏ qua
+                        if (isAnchorNavigating) return;
+
+                        if (i > 0) {
+                            goToSection(section, i, 'xuong');
+                        }
+                    },
+
+                    onEnterBack: () => {
+                        // 🚫 đang anchor thì bỏ qua
+                        if (isAnchorNavigating) return;
+
+                        if (i < sections.length - 1) {
+                            goToSection(section, i, 'len');
+                        }
+                    }
+                });
+            });
+        }
+    }
+
     function homeDuAnJs() {
-        const wrap = $('.sec-homeQuyMo');
+        const wrap = $('.sec-homeDuAn');
         if( wrap.length ) {
             const slideDom = wrap.find('.swiper');
             const slideBtnGropu = slideDom.find('.swiper-btn');
@@ -821,107 +931,35 @@
                     },
                 });
             }
+
         }
+        // const wrap = $('.sec-homeChiNhanh');
+        // if( wrap.length && ww > 1199 ) {
+        //     const list = wrap.find('.item-duan__list');
+        //     const content = list.find('.item-duan__listScroll');
+        //     if( content.width() > list.width() ) {
+        //         const fixWidth = content.outerWidth() - list.width();
+        //         const tl = new TimelineMax({
+        //             scrollTrigger: {
+        //                 trigger: wrap.find('.item-duan')[0],
+        //                 start: 'top top',
+        //                 end: 'bottom bottom',
+        //                 scrub: true,
+        //                 invalidateOnRefresh: true,
+        //                 anticipatePin: 0,
+        //             }
+        //         });
+        //         tl.to(wrap[0], 0.5, {  });
+        //         tl.to(wrap[0], 1, {
+        //             onUpdate: function() {
+        //                 let progress = this.progress().toFixed(3)*fixWidth;
+        //                 list[0].scrollTo(progress, 0);
+        //             }
+        //         });
+        //         tl.to(wrap[0], 0.5, {  });
+        //     }
+        // }
     }
-
-    function hoverEffect() {
-        const container = document.getElementById('homeLichSu-container');
-        const list = document.getElementById('homeLichSu-list');
-        const items = document.querySelectorAll('.f-year');
-
-        if (items.length) {
-            const normalWidth = items[0].offsetWidth;
-            const heightItem = items[0].offsetHeight;
-            let chia1 = Math.floor((normalWidth / 4.83870968));
-            let chia2 = Math.floor((chia1 / 1.66666667));
-            let expandedWidth = normalWidth * 3;
-
-            if( window.windowWidth < 768 ) {
-                chia1 = Math.floor((normalWidth / 13.9583333));
-                chia2 = Math.floor((chia1 / 1.71428571));
-                expandedWidth  = normalWidth;
-            }
-
-            let isDragging = false;
-            let startX;
-            let scrollLeft;
-
-            items.forEach((item) => {
-                item.style.clipPath = `polygon(0 ${chia1}px, ${chia2}px 0, ${normalWidth - chia2}px 0, ${normalWidth}px ${chia1}px, ${normalWidth}px ${heightItem}px, 0px ${heightItem}px)`;
-
-                item.addEventListener('click', (e) => {
-                    item.style.clipPath = `polygon(0 ${chia1}px, ${chia2}px 0, ${normalWidth - chia2}px 0, ${normalWidth}px ${chia1}px, ${normalWidth}px ${heightItem}px, 0px ${heightItem}px)`;
-
-                    if( window.windowWidth > 767 ) {
-                        items.forEach(el => {
-                            el.style.width = `${normalWidth}px`;
-                            el.classList.remove('active');
-                        });
-                        item.style.width = `${expandedWidth}px`;
-                        item.style.clipPath = `polygon(0 ${chia1}px, ${chia2}px 0, ${expandedWidth - chia2}px 0, ${expandedWidth}px ${chia1}px, ${expandedWidth}px ${heightItem}px, 0px ${heightItem}px)`;
-                        item.classList.add('active');
-                    } else {
-                        items.forEach(el => {
-                            el.style.height = `${heightItem}px`;
-                            el.classList.remove('active');
-                        });
-                        item.style.height = `${expandedWidth}px`;
-                        item.style.clipPath = `polygon(0 ${chia1}px, ${chia2}px 0, ${normalWidth - chia2}px 0, ${normalWidth}px ${chia1}px, ${normalWidth}px ${normalWidth}px, 0px ${normalWidth}px)`;
-                        item.classList.add('active');
-                    }
-                });
-            });
-
-            container.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-                container.style.cursor = 'grabbing';
-            });
-
-            container.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - container.offsetLeft;
-                const walk = (x - startX) * 2;
-                container.scrollLeft = scrollLeft - walk;
-            });
-
-            ['mouseup', 'mouseleave'].forEach(event => {
-                container.addEventListener(event, () => {
-                    isDragging = false;
-                    container.style.cursor = 'grab';
-
-                    if( window.windowWidth > 767 ) {
-                        items.forEach(el => {
-                            el.style.width = `${normalWidth}px`;
-                            el.style.clipPath = `polygon(0 ${chia1}px, ${chia2}px 0, ${normalWidth - chia2}px 0, ${normalWidth}px ${chia1}px, ${normalWidth}px ${heightItem}px, 0px ${heightItem}px)`;
-                            el.classList.remove('active');
-                        });
-                    } else {
-                        items.forEach(el => {
-                            el.style.height = `${heightItem}px`;
-                            el.style.clipPath = `polygon(0 ${chia1}px, ${chia2}px 0, ${normalWidth - chia2}px 0, ${normalWidth}px ${chia1}px, ${normalWidth}px ${heightItem}px, 0px ${heightItem}px)`;
-                            el.classList.remove('active');
-                        });
-                    }
-                });
-            });
-
-            // Reset transform khi scroll (tránh lỗi khi item đang mở rộng)
-            container.addEventListener('scroll', () => {
-                if (!isDragging) {
-                    items.forEach(item => {
-                        if (parseFloat(item.style.width || 0) > normalWidth + 10) {
-                            item.dispatchEvent(new Event('mouseleave'));
-                            setTimeout(() => item.dispatchEvent(new Event('mouseenter')), 50);
-                        }
-                    });
-                }
-            });
-        }
-    }
-    hoverEffect();
 
     function popoverJs() {
         const triggers = document.querySelectorAll('.popover-trigger');
@@ -971,6 +1009,7 @@
 
         document.addEventListener('click', hideAllPopovers);
 
+        // Ngăn popover tự ẩn khi click vào nó
         document.querySelectorAll('.popover').forEach(popover => {
             popover.addEventListener('click', e => e.stopPropagation());
         });
@@ -1011,63 +1050,23 @@
         }
     }
 
-    const setdataYear  = (firstYear, nowYear) => {
-        const years = [];
-        for (let year = firstYear; year <= 2025; year++) {
-            years.push(year);
-        }
-        const first = years[0];
-        const last = years.at(-1);
-        const middleOnly = years.slice(1, -1);
-        const middleThree = [];
-        const temp = [...middleOnly];
-        while (middleThree.length < 3) {
-            const randomIndex = Math.floor(Math.random() * temp.length);
-            middleThree.push(temp.splice(randomIndex, 1)[0]);
-        }
-        middleThree.sort((a, b) => a - b);
-        const result = [...middleThree, last];
-        return result;
-    }
-
     function loadingJs() {
         const wrap = $('.loading');
-        let years = [];
-        let _timeout = 100;
+        let _timeout = 700;
         let _dur = 2.5;
         if(wrap.length) {
-            const yearDom = wrap.find('.num-run');
-            const getYear = yearDom.text();
-            const getYearData = yearDom.attr('data-now');
-            years = setdataYear(Number(getYear), Number(getYearData));
-
             if ((device.mobile() || device.tablet()) && device.orientation === 'portrait') {
                 _timeout = 600;
                 _dur = 1;
             }
             const tl = new TimelineMax();
-            tl.to(yearDom, {
-                duration: 0,
-                text: getYear,
-                ease: "none",
-            });
-            tl.to(yearDom, 1, { });
-            years.forEach((item) => {
-                tl.to(yearDom, 0.3, {
-                    onStart: () => {
-                        yearDom.text(item);
-                    }
-                });
-            });
-            tl.to(yearDom, 0.3, { });
+            tl.to('.loading__logo', 1, { });
             tl.to('.loading__logo', 0.3, { autoAlpha: 0 });
             tl.to('.loading__inner', _dur, { width: '100%', ease: 'none' });
             tl.to('.loading__inner', _dur, {
-                scale: 5, z: 10, transformOrigin: 'bottom center', ease: 'none',
+                scale: 6.3, z: 10, transformOrigin: 'bottom center', ease: 'none',
                 onStart: () => {
-                    gsap.to('.loading__body', 0.3, { autoAlpha: 0 });
                     setTimeout(() => {
-                        $('body').removeClass('body-fix-scroll');
                         wowLoadDoneJs();
                         lenis.start();
                     }, _timeout);
@@ -1089,6 +1088,7 @@
     loadingJs();
 
     $(window).on('load', function() {
+        homeDichvuJs();
         homeDuAnJs();
         dataStickyFix();
         onePageNav();

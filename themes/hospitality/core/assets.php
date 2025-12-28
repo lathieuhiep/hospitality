@@ -77,8 +77,6 @@ function hospitality_enqueue_theme_assets(): void
     wp_enqueue_script('gsap', get_theme_file_uri('/assets/vendors/greensock/GSAP.min.js'), ['jquery'], '3.12.2', true);
     wp_enqueue_script('ScrollTrigger', get_theme_file_uri('/assets/vendors/greensock/ScrollTrigger.min.js'), ['jquery', 'gsap'], '3.12.2', true);
     wp_enqueue_script('ScrollToPlugin', get_theme_file_uri('/assets/vendors/greensock/ScrollToPlugin.min.js'), ['jquery', 'gsap'], '3.12.2', true);
-    wp_enqueue_script('TextPlugin', get_theme_file_uri('/assets/vendors/greensock/TextPlugin.min.js'), ['jquery', 'gsap'], '3.12.2', true);
-    wp_enqueue_script('SplitText', get_theme_file_uri('/assets/vendors/greensock/SplitText.min.js'), ['jquery', 'gsap'], '3.12.2', true);
 
     // headroom library
     wp_enqueue_script('headroom', get_theme_file_uri('/assets/vendors/headroom/headroom.js'), ['jquery'], '0.9.4', true);

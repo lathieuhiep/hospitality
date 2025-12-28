@@ -1,9 +1,11 @@
+        <?php
+        if ( !is_404() ) :
+            get_template_part('template-parts/components/inc', 'recruitment');
+        endif;
+        ?>
     </main><!-- close main.main-content -->
 
-    <?php
-    if ( !is_404() ) :
-        get_template_part('template-parts/components/inc', 'recruitment');
-    ?>
+    <?php if ( !is_404() ) : ?>
         <footer class="footer" id="id-lienhe">
             <div class="container">
                 <div class="item-inner">

@@ -4,11 +4,10 @@ namespace ResidenceTheme\MetaBox\PageHome;
 
 use Carbon_Fields\Container;
 use ResidenceTheme\MetaBox\PageHome\Tabs\AboutTab;
-use ResidenceTheme\MetaBox\PageHome\Tabs\BusinessActivitiesTab;
-use ResidenceTheme\MetaBox\PageHome\Tabs\CompanyScaleTab;
-use ResidenceTheme\MetaBox\PageHome\Tabs\CoreValuesTab;
 use ResidenceTheme\MetaBox\PageHome\Tabs\HeroTab;
-use ResidenceTheme\MetaBox\PageHome\Tabs\HistoryTab;
+use ResidenceTheme\MetaBox\PageHome\Tabs\PartnersTab;
+use ResidenceTheme\MetaBox\PageHome\Tabs\ProjectsTab;
+use ResidenceTheme\MetaBox\PageHome\Tabs\ServicesTab;
 
 defined('ABSPATH') || exit;
 
@@ -22,10 +21,9 @@ final class HomeContainer
         // include tabs (dependency của Home)
         require_once __DIR__ . '/Tabs/HeroTab.php';
         require_once __DIR__ . '/Tabs/AboutTab.php';
-        require_once __DIR__ . '/Tabs/CompanyScaleTab.php';
-        require_once __DIR__ . '/Tabs/BusinessActivitiesTab.php';
-        require_once __DIR__ . '/Tabs/HistoryTab.php';
-        require_once __DIR__ . '/Tabs/CoreValuesTab.php';
+        require_once __DIR__ . '/Tabs/ServicesTab.php';
+        require_once __DIR__ . '/Tabs/ProjectsTab.php';
+        require_once __DIR__ . '/Tabs/PartnersTab.php';
 
         self::register();
     }
@@ -44,22 +42,18 @@ final class HomeContainer
             ->add_tab(
                 esc_html__('Hero', 'hospitality'),
                 HeroTab::fields()
-            )
-            ->add_tab(
+            )->add_tab(
                 esc_html__('Giới thiệu', 'hospitality'),
                 AboutTab::fields()
             )->add_tab(
-                esc_html__('Quy mô', 'hospitality'),
-                CompanyScaleTab::fields()
+                esc_html__('Dịch vụ', 'hospitality'),
+                ServicesTab::fields()
             )->add_tab(
-                esc_html__('Lĩnh vực hoạt động', 'hospitality'),
-                BusinessActivitiesTab::fields()
+                esc_html__('Dự án', 'hospitality'),
+                ProjectsTab::fields()
             )->add_tab(
-                esc_html__('Lịch sử phát triển', 'hospitality'),
-                HistoryTab::fields()
-            )->add_tab(
-                esc_html__('Giá trị cột lõi', 'hospitality'),
-                CoreValuesTab::fields()
+                esc_html__('Đối tác', 'hospitality'),
+                PartnersTab::fields()
             );
     }
 }
