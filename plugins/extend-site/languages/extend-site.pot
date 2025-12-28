@@ -1,0 +1,329 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Extend Site\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-21 08:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.9; php-8.1.30\n"
+"X-Domain: extend-site"
+
+#: includes/MetaBox/BranchMetaBox.php:97
+msgid "Area"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:55
+msgid "Banner"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:28
+msgid "Brand gallery"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:94
+msgid "Capacity"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:100
+#, php-format
+msgid "Cha của %s:"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:96 includes/PostType/BasePostType.php:134
+#, php-format
+msgid "Chỉnh sửa %s"
+msgstr ""
+
+#: includes/Options/ThemeOptions.php:26
+msgid "Contact"
+msgstr ""
+
+#: includes/Options/CopyrightOptions.php:25
+msgid "Content"
+msgstr ""
+
+#: includes/Options/ThemeOptions.php:36
+msgid "Copyright"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:145
+msgid ""
+"Cách lấy tọa độ: Mở Google Maps → tìm địa chỉ → chuột phải vào vị trí → sẽ "
+"hiện tọa độ\" → copy số đứng trước (ví dụ: 21.01781)."
+msgstr ""
+
+#: includes/PostType/BasePostType.php:135
+#, php-format
+msgid "Cập nhật %s"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:130
+#, php-format
+msgid "Danh mục %s"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:74
+msgid "Danh sách loại phòng"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:129
+msgid "Danh sách vị trí (dùng chung cho loại phòng)"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:42
+msgid "Danh sách địa chỉ"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:34
+msgid "Danh sách địa chỉ (Footer)"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:63
+msgid "Danh sách địa chỉ cột"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:100
+msgid "Detail"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:156
+msgid "Dán số đứng sau trong tọa độ Google Maps (ví dụ: 105.85293)."
+msgstr ""
+
+#: includes/Options/ContactOptions.php:21
+msgid "Email"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Essential toolkit for WordPress: custom post types, widgets, and site "
+"extensions."
+msgstr ""
+
+#. Name of the plugin
+msgid "Extend Site"
+msgstr ""
+
+#: includes/Options/ThemeOptions.php:33
+msgid "Footer"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:113
+msgid "Gallery"
+msgstr ""
+
+#: includes/Options/ThemeOptions.php:22
+msgid "General"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:65
+msgid "Giới thiệu"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:20
+msgid "Hotline"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:44
+msgid "https://..."
+msgstr ""
+
+#: includes/PostType/BasePostType.php:102
+msgid "Không tìm thấy trong Thùng rác."
+msgstr ""
+
+#: includes/PostType/BasePostType.php:101
+msgid "Không tìm thấy."
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:58
+msgid "Kích thước đề xuất: 1920x600px"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:62
+msgid "Kích thước đề xuất: 768x600px"
+msgstr ""
+
+#. Author of the plugin
+msgid "La Thieu Hiep"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:142
+msgid "Latitude (Vĩ độ)"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:41
+msgid "Link"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:24 includes/Options/GeneralOptions.php:28
+msgid "Logo"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:153
+msgid "Longitude (Kinh độ)"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:70
+msgid "Loại phòng"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:67 includes/MetaBox/BranchMetaBox.php:105
+#: includes/MetaBox/BranchMetaBox.php:134
+msgid "Mô tả"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:27
+msgid "Mạng xã hội"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:61
+msgid "Mỗi block tương ứng một cột. Mỗi dòng là một địa chỉ."
+msgstr ""
+
+#: includes/PostType/BasePostType.php:95
+#, php-format
+msgid "Mới %s"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:170
+msgid "Mức zoom bản đồ (1–19). Thường dùng: 15–17."
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:104
+#: includes/MetaBox/BranchMetaBox.php:133
+msgid "Nội dung"
+msgstr ""
+
+#: includes/Options/ThemeOptions.php:30
+msgid "Recruitment"
+msgstr ""
+
+#: includes/Options/CopyrightOptions.php:20
+msgid "Show Copyright"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:177
+msgid "Số lượng căn hộ"
+msgstr ""
+
+#: includes/Options/ThemeOptions.php:18
+msgid "Theme Settings"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:94 includes/PostType/BasePostType.php:136
+#, php-format
+msgid "Thêm %s"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:93
+msgid "Thêm mới"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:53
+msgid "Thông tin chi nhánh"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:92
+msgid "Thông tin phòng"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:173
+msgid "Thông tin thêm"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:66
+msgid "Tiêu đề"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:137
+#, php-format
+msgid "Tên %s"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:83
+msgid "Tên loại phòng"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:35
+msgid "Tên mạng xã hội"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:99 includes/PostType/BasePostType.php:132
+#, php-format
+msgid "Tìm kiếm %s"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:98 includes/PostType/BasePostType.php:133
+#, php-format
+msgid "Tất cả %s"
+msgstr ""
+
+#: includes/Admin/Helpers/TaxFilter.php:46
+msgid "Tất cả danh mục"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:86
+msgid "VD: Căn hộ studio, Căn hộ 2 phòng ngủ"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:36
+msgid "Ví dụ: FACEBOOK, INSTAGRAM"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:128
+msgid "Vị trí"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:136
+msgid "Vị trí chi nhánh"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:97
+#, php-format
+msgid "Xem %s"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:164
+msgid "Zoom"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:50
+msgid "Địa chỉ"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:138
+msgid "Địa chỉ chi nhánh"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:68 includes/MetaBox/BranchMetaBox.php:119
+msgid "Ảnh"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:56
+msgid "Ảnh Desktop"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:60
+msgid "Ảnh Mobile"
+msgstr ""
+
+#: includes/Options/RecruitmentOptions.php:26
+msgid "Ảnh tuyển dụng 1"
+msgstr ""
+
+#: includes/Options/RecruitmentOptions.php:27
+msgid "Ảnh tuyển dụng 2"
+msgstr ""
+
+#: includes/Options/RecruitmentOptions.php:28
+msgid "Ảnh tuyển dụng 3"
+msgstr ""
