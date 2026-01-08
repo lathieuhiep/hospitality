@@ -4,8 +4,6 @@ namespace ExtendSite\Core;
 
 use ExtendSite\MetaBox\BranchMetaBox;
 use ExtendSite\Options\ThemeOptions;
-use ExtendSite\PostType\BranchPostType;
-use ExtendSite\PostType\TemplateLoader;
 
 defined('ABSPATH') || exit;
 
@@ -15,7 +13,6 @@ class Plugin
     {
         self::load_text_domain();
         self::load_enqueue();
-        self::load_custom_post_types();
 
         // Flush rewrite
         self::maybe_flush_rewrite();
@@ -48,16 +45,6 @@ class Plugin
     private static function load_enqueue(): void
     {
         Enqueue::boot();
-    }
-
-    /**
-     * Load custom post types.
-     */
-    private static function load_custom_post_types(): void
-    {
-        new BranchPostType();
-
-        TemplateLoader::boot();
     }
 
     /**
