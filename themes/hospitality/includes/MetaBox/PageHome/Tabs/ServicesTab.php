@@ -45,7 +45,7 @@ final class ServicesTab
                 esc_html__('Services List', 'extend-site')
             )
                 ->set_max(5)
-                ->set_layout('tabbed-horizontal')
+                ->set_layout('tabbed-vertical')
                 ->add_fields([
                     Field::make(
                         'image',
@@ -58,7 +58,8 @@ final class ServicesTab
                         esc_html__('Service Title', 'extend-site')
                     ),
                 ])
-                ->set_header_template('<%- title ? title : "Service item" %>'),
+                ->set_header_template('<%- title ? title : "Service item" %>')
+                ->set_collapsed( true ),
         ];
     }
 
