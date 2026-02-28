@@ -6492,6 +6492,10 @@ body.body-fix-scroll {
     body {
         font-size: 1rem;
     }
+
+    .sec-homeDuAn {
+        margin-bottom: 3rem;
+    }
 }
 @media (max-width: 767.98px) {
     body {
@@ -12820,6 +12824,7 @@ textarea {
 @media (min-width: 1200px) {
     .sec-homeDuAn {
         padding: 0;
+        margin-bottom: 6rem;
     }
     .sec-homeDuAn .item-wrap .g-dot {
         height: 40lvh;
@@ -12842,7 +12847,7 @@ textarea {
         top: 0;
         left: 0;
         right: 0;
-        height: 100lvh;
+        min-height: 100lvh;
     }
 }
 .sec-homeDuAn .duanBox-scroll {
