@@ -39,13 +39,9 @@ if (empty($partners['title']) && empty($items)) {
                         <img
                             src=""
                             alt=""
-                            <?php if (!empty($item['logo_pc'])): ?>
-                                data-img-pc="<?php echo esc_url(wp_get_attachment_url($item['logo_pc'])); ?>"
-                            <?php endif; ?>
-                            <?php if (!empty($item['logo_mb'])): ?>
-                                data-img-mb="<?php echo esc_url(wp_get_attachment_url($item['logo_mb'])); ?>"
-                            <?php endif; ?>
-                        >
+                            width="200"
+                            height="104"
+                            data-img-pc="<?php echo esc_url( wp_get_attachment_url( (int) $item ) ); ?>">
                     </div>
                 <?php endforeach; ?>
 

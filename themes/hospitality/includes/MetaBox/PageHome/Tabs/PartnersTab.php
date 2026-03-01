@@ -11,7 +11,7 @@ final class PartnersTab
     private const META_KEY = 'home_partners';
 
     private const META_TITLE = self::META_KEY . '_title';
-    private const META_LIST  = self::META_KEY . '_list';
+    private const META_GALLERY  = self::META_KEY . '_gallery';
 
     /**
      * @return array<Field>
@@ -26,17 +26,8 @@ final class PartnersTab
             )
                 ->set_default_value(esc_html__('Đối Tác Của Chúng Tôi', 'extend-site')),
 
-            Field::make(
-                'complex',
-                self::META_LIST,
-                esc_html__('Partners logos', 'extend-site')
-            )
-                ->set_layout('tabbed-horizontal')
-                ->add_fields([
-                    Field::make('image', 'logo_pc', esc_html__('Logo PC', 'extend-site')),
-                    Field::make('image', 'logo_mb', esc_html__('Logo Mobile', 'extend-site')),
-                ])
-                ->set_header_template('Logo'),
+            // media gallery
+            Field::make( 'media_gallery', self::META_GALLERY, esc_html__( 'Đối tác', 'extend-site' ) ),
         ];
     }
 
@@ -44,7 +35,7 @@ final class PartnersTab
     {
         return [
             'title' => carbon_get_post_meta($post_id, self::META_TITLE),
-            'items' => carbon_get_post_meta($post_id, self::META_LIST) ?: [],
+            'items' => carbon_get_post_meta($post_id, self::META_GALLERY) ?: [],
         ];
     }
 }
