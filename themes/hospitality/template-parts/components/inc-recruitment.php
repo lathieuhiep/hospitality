@@ -4,6 +4,30 @@ use ExtendSite\Options\ContactOptions;
 use ExtendSite\Options\RecruitmentOptions;
 
 $recruitment_options = hospitality_get_opt(RecruitmentOptions::class)?->get_opt_recruitment_images() ?? [];
+$recruitment_page_args = [
+    'post_type'        => 'page',
+    'post_status'      => 'publish',
+    'numberposts'      => 1,
+    'orderby'          => 'menu_order title',
+    'order'            => 'ASC',
+    'meta_key'         => '_wp_page_template',
+    'meta_value'       => 'templates/page-recruitment-content.php',
+    'suppress_filters' => false,
+];
+
+if ( function_exists( 'pll_current_language' ) ) {
+    $recruitment_page_args['lang'] = pll_current_language( 'slug' );
+}
+
+$recruitment_page = get_posts( $recruitment_page_args )[0] ?? null;
+$recruitment_content = $recruitment_page instanceof WP_Post
+    ? apply_filters( 'the_content', $recruitment_page->post_content )
+    : wpautop(
+        esc_html__(
+            'Bạn đang tìm kiếm một môi trường làm việc chuyên nghiệp, năng động và đầy cơ hội phát triển? Thai Hoang Holdings chính là nơi dành cho bạn! Chúng tôi đang mở rộng quy mô và tìm kiếm những cá nhân tài năng, nhiệt huyết để cùng đồng hành và tạo nên những bước tiến mới! Để ứng tuyển, vui lòng liên hệ bộ phận HCNS tại:',
+            'residence'
+        )
+    );
 
 $left_image = $main_image = $right_image = null;
 
@@ -86,9 +110,7 @@ $email = hospitality_get_opt(ContactOptions::class)?->get_opt_contact_email() ??
                 <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
                     <div class="item-text">
                         <div class="f-entry wow fadeInUp">
-                            <p>
-                                <?php esc_html_e('Bạn đang tìm kiếm một môi trường làm việc chuyên nghiệp, năng động và đầy cơ hội phát triển? Thai Hoang Hospitality chính là nơi dành cho bạn! Chúng tôi đang mở rộng quy mô và tìm kiếm những cá nhân tài năng, nhiệt huyết để cùng đồng hành và tạo nên những bước tiến mới! Để ứng tuyển, vui lòng liên hệ bộ phận HCNS tại:' , 'hospitality'); ?>
-                            </p>
+                            <?php echo $recruitment_content; ?>
                         </div>
                         <ul class="f-list wow fadeInUp">
                             <li>
