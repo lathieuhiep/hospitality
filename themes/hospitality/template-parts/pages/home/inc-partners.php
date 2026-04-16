@@ -37,9 +37,7 @@ if (empty($partners['title']) && empty($items)) {
                 <?php foreach ($items as $item): ?>
                     <div class="f-logo">
                         <img
-                            src=""
-                            alt=""
-                            data-img-pc="<?php echo esc_url( wp_get_attachment_url( (int) $item ) ); ?>">
+                            src="<?php echo esc_url( wp_get_attachment_url( (int) $item ) ); ?>">
                     </div>
                 <?php endforeach; ?>
 
