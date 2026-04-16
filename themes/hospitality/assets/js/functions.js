@@ -21,13 +21,11 @@
     // console.log(MathUtils.getRandomFloat(0,3));
 
 
-    if (history.scrollRestoration) {
-        // history.scrollRestoration = 'auto';
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
     }
+    window.scrollTo(0,0);
 
-    // setTimeout(function() {
-    //     window.scrollTo({ top: 0, behavior: 'smooth' })
-    // });
 
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -960,6 +958,37 @@
         //     }
         // }
     }
+    function homeDoiTacJs() {
+        const wrap = document.querySelector('.sec-homeDoiTac');
+        if( wrap ) {
+            const logoWrap = wrap.querySelector('.item-logo');
+            const logos = logoWrap.querySelectorAll('.f-logo img');
+            const targetHeight = logoWrap.querySelector('.f-wrap').clientHeight;
+
+            logos.forEach(logo => {
+                // 1. Tính toán tỉ lệ của ảnh gốc
+                // Tỉ lệ = Rộng gốc / Cao gốc
+                const ratio = logo.naturalWidth / logo.naturalHeight;
+
+                // 2. Set chiều cao cố định
+                logo.parentElement.style.height = targetHeight + "px";
+
+                // 3. Set chiều rộng tương ứng dựa trên tỉ lệ
+                logo.parentElement.style.width = (targetHeight * ratio) + "px";
+            });
+            logoWrap.classList.add('done');
+
+            const domWrap = logoWrap.querySelector('.f-wrap');
+            const getClone = domWrap.cloneNode(true);
+            const getLength = domWrap.querySelectorAll('.f-logo').length;
+            getClone.classList.add('f-clone');
+            domWrap.after(getClone);
+            
+            wrap.querySelectorAll('.f-wrap').forEach((e) => {
+                e.style.setProperty('--time', `${getLength*3}s`);
+            });
+        }
+    }
 
     function popoverJs() {
         const triggers = document.querySelectorAll('.popover-trigger');
@@ -1084,6 +1113,7 @@
     tabboxJs();
     selectLangJs();
     backToTopJs();
+    homeDoiTacJs();
     popoverJs();
     loadingJs();
 

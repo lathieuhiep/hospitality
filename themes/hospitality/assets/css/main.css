@@ -433,13 +433,16 @@ legend {
     padding: 0;
     margin-bottom: 0.5rem;
     font-size: calc(1.275rem + 0.3vw);
-    line-height: inherit;
 }
 @media (min-width: 1200px) {
     legend {
         font-size: 1.5rem;
     }
 }
+legend {
+  line-height: inherit;
+}
+
 legend + * {
     clear: left;
 }
@@ -12937,34 +12940,68 @@ textarea {
         width: 43.75rem;
     }
 }
-
 .sec-homeDoiTac .item-title {
-    text-align: center;
-    margin-bottom: 1.875rem;
+  text-align: center;
+  margin-bottom: 1.875rem;
+}
+.sec-homeDoiTac .item-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 .sec-homeDoiTac .item-logo .f-wrap {
-    font-size: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  font-size: 0;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  height: 1.875rem;
 }
 .sec-homeDoiTac .item-logo .f-wrap .f-logo {
-    width: 300px;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    -webkit-animation: doitacRun 30s linear infinite;
-    animation: doitacRun 30s linear infinite;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
-.sec-homeDoiTac .item-logo .f-wrap .f-logo img {
-    width: 100%;
+.sec-homeDoiTac .item-logo.done .f-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-animation: doitacRun var(--time) linear infinite;
+          animation: doitacRun var(--time) linear infinite;
+}
+.sec-homeDoiTac .item-logo.done .f-wrap .f-logo {
+  margin-right: 2.5rem;
+}
+.sec-homeDoiTac .item-logo.done .f-wrap .f-logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media (min-width: 768px) {
+  .sec-homeDoiTac .item-logo.done .f-wrap .f-logo {
+    margin-right: 3.75rem;
+  }
+}
+@media (min-width: 1200px) {
+  .sec-homeDoiTac .item-logo.done .f-wrap {
+    height: 3.75rem;
+  }
+  .sec-homeDoiTac .item-logo.done .f-wrap .f-logo {
+    margin-right: 6.25rem;
+  }
 }
 @media (min-width: 768px) {
     .sec-homeDoiTac .item-title {
         margin-bottom: 3.125rem;
     }
-    .sec-homeDoiTac .item-logo .f-wrap .f-logo {
-        width: 300px;
+    .sec-homeDoiTac .item-logo .f-wrap {
+        height: 2.5rem;
     }
+
 }
 @media (min-width: 1200px) {
     .sec-homeDoiTac {
@@ -12973,9 +13010,10 @@ textarea {
     .sec-homeDoiTac .item-title {
         margin-bottom: 5rem;
     }
-    .sec-homeDoiTac .item-logo .f-wrap .f-logo {
-        width: 400px;
+    .sec-homeDoiTac .item-logo .f-wrap {
+        height: 3.125rem;
     }
+
 }
 
 @-webkit-keyframes doitacRun {

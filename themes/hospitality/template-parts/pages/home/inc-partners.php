@@ -39,8 +39,6 @@ if (empty($partners['title']) && empty($items)) {
                         <img
                             src=""
                             alt=""
-                            width="200"
-                            height="104"
                             data-img-pc="<?php echo esc_url( wp_get_attachment_url( (int) $item ) ); ?>">
                     </div>
                 <?php endforeach; ?>
