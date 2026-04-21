@@ -112,7 +112,7 @@ $email = hospitality_get_opt(ContactOptions::class)?->get_opt_contact_email() ??
                         <div class="f-entry wow fadeInUp">
                             <?php echo $recruitment_content; ?>
                         </div>
-                        <ul class="f-list wow fadeInUp">
+                       <!--  <ul class="f-list wow fadeInUp">
                             <li>
                                 <span><?php esc_html_e('Email', 'hospitality'); ?></span>
                                 <a href="mailto:<?php echo esc_attr( $email )?>"><?php echo esc_html( $email )?></a>
@@ -121,7 +121,7 @@ $email = hospitality_get_opt(ContactOptions::class)?->get_opt_contact_email() ??
                                 <span><?php esc_html_e('Phone', 'hospitality'); ?></span>
                                 <a href="tel:<?php echo esc_attr( hospitality_preg_replace_ony_number($phone) ) ?>"><?php echo esc_html( $phone ); ?></a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
