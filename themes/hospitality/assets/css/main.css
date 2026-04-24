@@ -11565,7 +11565,12 @@ textarea {
     background-color: #000;
     opacity: 0.4;
 }
-
+.duanBox__link {
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    display: block;
+}
 .duanBox__body {
     position: absolute;
     z-index: 2;

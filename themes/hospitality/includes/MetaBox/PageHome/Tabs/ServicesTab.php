@@ -44,8 +44,8 @@ final class ServicesTab
                 self::META_LIST,
                 esc_html__('Services List', 'extend-site')
             )
-                ->set_max(5)
-                ->set_layout('tabbed-vertical')
+                // ->set_max(5)
+                // ->set_layout('tabbed-vertical')
                 ->add_fields([
                     Field::make(
                         'image',

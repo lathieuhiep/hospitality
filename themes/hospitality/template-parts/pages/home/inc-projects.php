@@ -45,12 +45,10 @@ if (empty($projects['title']) && empty($items)) {
 
                             <?php foreach ($items as $i => $item): ?>
                                 <div class="swiper-slide">
-                                    <div
-                                        class="duanBox wow fadeInUp"
-                                        <?php if ($i > 0): ?>
-                                            data-wow-delay=".<?php echo esc_attr($i); ?>s"
-                                        <?php endif; ?>
-                                    >
+                                     <?php
+                                    $item_link = !empty($item['link']) ? trim((string) $item['link']) : '';
+                                    ?>
+                                    <div class="duanBox wow fadeInUp" data-wow-delay="<?php echo esc_attr(($index + 1) * 0.1); ?>s">
                                         <div class="duanBox__img">
                                             <?php
                                             if (!empty($item['image'])) {
@@ -72,6 +70,13 @@ if (empty($projects['title']) && empty($items)) {
                                                 <p><?php echo esc_html($item['desc']); ?></p>
                                             <?php endif; ?>
                                         </div>
+                                         <?php if ($item_link !== '') : ?>
+                                            <a
+                                                class="duanBox__link"
+                                                href="<?php echo esc_url($item_link); ?>"
+                                                aria-label="<?php echo esc_attr(!empty($item['title']) ? $item['title'] : __('Xem chi tiết', 'extend-site')); ?>"
+                                            ></a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
